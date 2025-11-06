@@ -1,20 +1,21 @@
 # CW Doppler Radar: Speed, Tracking & Classification (MATLAB)
+This repository contains MATLAB code for processing continuous-wave (CW) Doppler radar recordings to perform **vehicle speed estimation**, **multi-target tracking (JPDA + CA Kalman filter)**, and **rule-based vehicle classification**.
 
-End-to-end MATLAB pipeline for roadside vehicle **speed estimation, multi-target tracking (JPDA + CA-KF), and rule-based classification** using a **24 GHz CW Doppler** sensor.
-The demo runs on eight reference recordings (WAV files) from **Chapter 3** of the accompanying MSc dissertation and reproduces the figures/behaviour described there.
+The script runs on **any valid radar WAV file**, provided it contains a baseband Doppler signal from a 24 GHz CW radar.  
+Eight reference recordings are included in the repository — the same examples used for the demonstrations, testing, and results presented in **Chapter 3** of the MSc dissertation. Running them will reproduce the figures and behaviour described there.
 
 ---
 
-## What this repo does
+## Overview
 
-* Builds a **speed–time spectrogram** from audio (radar IF) logs
-* Detects targets with **OS-CFAR**
-* Consolidates hits per frame with **1-D DBSCAN**
-* Tracks multiple vehicles with **trackerJPDA** (custom **CA Kalman** filter)
-* Merges fragmented tracks (overlap + same-velocity short-gap logic)
-* Picks a representative speed per vehicle (cosine-corrected)
-* Classifies vehicles by **normalised ramp width**:
-
+The full radar signal-processing pipeline includes:
+1. **Spectrogram generation** using the short-time Fourier transform (STFT)
+2. **Target detection** via Ordered-Statistic CFAR (OS-CFAR)
+3. **Per-frame clustering** using 1-D DBSCAN
+4. **Multi-target tracking (MTT)** with a Joint Probabilistic Data Association (JPDA) tracker and a Constant-Acceleration (CA) Kalman filter
+5. **Track merging** (overlap + same-velocity short-gap)
+6. **Speed estimation** with cosine-angle correction
+7. **Vehicle classification** using normalised Doppler-ramp width
   * `< 3` → *Motorbike/Bicycle*
   * `3–9.5` → *Car/Minibus*
   * `> 9.5` → *Bus/Truck*
@@ -34,161 +35,128 @@ The demo runs on eight reference recordings (WAV files) from **Chapter 3** of th
 
 ---
 
-## Folder contents (core files)
+### Reference WAV Recordings (Examples)
 
-* **WAV recordings (8 options; numbered as in Dissertation Chapter 3):**
+| File                                    | Description                  | Suggested `direction` |
+| --------------------------------------- | ---------------------------- | --------------------- |
+| 01_LM358_Car_away.wav                   | Early LM358 prototype test   | "away"                |
+| 02_AD620_Car_away.wav                   | Improved amplifier test      | "away"                |
+| 03_Motorbike_Car_towards.wav            | Controlled two-vehicle trial | "towards"             |
+| 04_Control_1_Car_Motorcycle_away.wav    | Controlled trial             | "away"                |
+| 05_Control_2_Motorcycle_Car_towards.wav | Controlled trial             | "towards"             |
+| 06_Uncontrol_1_Bus_away.wav             | Uncontrolled roadside trial  | "away"                |
+| 07_Uncontrol_2_4Cars_away.wav           | Uncontrolled roadside trial  | "away"                |
+| 08_Uncontrol_3_2Cars_towards.wav        | Uncontrolled roadside trial  | "towards"             |
 
-  1. `01_LM358_Car_away.wav`
-  2. `02_AD620_Car_away.wav`
-  3. `03_Motorbike_Car_towards.wav`
-  4. `04_Control_1_Car_Motorcycle_away.wav`
-  5. `05_Control_2_Motorcycle_Car_towards.wav`
-  6. `06_Uncontrol_1_Bus_away.wav`
-  7. `07_Uncontrol_2_4Cars_away.wav`
-  8. `08_Uncontrol_3_2Cars_towards.wav`
-* **Pipeline & helpers**
-
-  * `powerSpectrogram.m` – STFT → power spectrogram (|STFT|²)
-  * `oscfarDetector.m` – OS-CFAR per column
-  * `solveAlphaOS.m` – OS-CFAR scaling factor (given PFA, N, k)
-  * `initCAKF.m` – custom Constant-Acceleration Kalman filter init
-  * `mergeTracksAllPassesAvg.m` – overlap-based merge (avg speed diff)
-  * `mergeTracksSameVelocityGap.m` – same-velocity short-gap merge
-  * `computeVehicleSpeedWithExtrap.m` – representative speed + 0 m/s extrapolation
-  * `runPhase1.m` – (optional) alternative script used during Phase 1 work
-* **Main demo script (this README targets it):** your provided script block (save as e.g. `demo_main.m`)
-
-> The screenshot in the repo shows these files together with the eight WAVs.
+> These eight recordings were analysed in Chapter 3 of the dissertation, but the code will process **any** valid radar WAV input.
 
 ---
 
-## Quick start
+### Key MATLAB Scripts
 
-1. Open MATLAB in this folder.
-2. Edit the top of the main script to choose **one** recording and its **direction**:
+| Script                              | Purpose                                                        |
+| ----------------------------------- | -------------------------------------------------------------- |
+| **demo_main.m**                     | Main end-to-end pipeline                                       |
+| **powerSpectrogram.m**              | Computes STFT → power spectrogram                              |
+| **oscfarDetector.m**                | Column-wise OS-CFAR detection                                  |
+| **solveAlphaOS.m**                  | Solves OS-CFAR scaling factor                                  |
+| **initCAKF.m**                      | Constant-Acceleration Kalman filter initialiser                |
+| **mergeTracksAllPassesAvg.m**       | Overlap-based track merge                                      |
+| **mergeTracksSameVelocityGap.m**    | Same-velocity short-gap merge                                  |
+| **computeVehicleSpeedWithExtrap.m** | Calculates representative speed and extrapolated zero-crossing |
+| **runPhase1.m**                     |**main script**                               |
 
-```matlab
-% --- Select ONE of the 8 WAV files (see list above) ---
-wavFile  = '08_Uncontrol_3_2Cars_towards.wav';
+---
 
-% --- Must match the recording geometry ---
-direction = "towards";   % or "away"
+## How to Run
+
+1. Open MATLAB in this repository folder.
+
+2. Open  **runPhase1.m**  .
+
+3. At the top of the file, set the WAV filename and direction:
+
+   ```matlab
+   wavFile   = '08_Uncontrol_3_2Cars_towards.wav';
+   direction = "towards";   % or "away"
+   ```
+
+4. Run the script.
+
+The program will:
+
+* Generate and display multiple figures (spectrograms, detections, clusters, tracks, classification)
+* Print a summary table of detected vehicles with estimated speeds and classes
+
+---
+
+## Example Output
+
+```
+Vehicle  Speed (m/s)  Speed (km/h)  Time. Width  Norm. Width  Direction  Class
+1        12.34        44.42         1.25         8.65         towards    Car/Minibus
+2        6.11         22.00         0.85         2.50         towards    Motorbike/Bicycle
+
 ```
 
-3. Run the script.
-   It will generate several figures (spectrograms, detections, clustering, tracking, merged tracks) and print a summary table like:
+---
 
-```
-Vehicle  Speed (m/s)   Speed (km/h)  Time. Width   Norm. Width   Direction   Class
-1        12.34         44.42         1.25          8.65          towards     Car/Minibus
-...
-```
+## Core Parameters (Editable in Script)
+
+* **Spectrogram:**
+  `frameLength = 4096`, `overlap = 0.5 * frameLength`, `windowFunction = hanning(frameLength)`
+
+* **CFAR:**
+  `PFA = 1e-6`, `RefWindow = 100`, `NumGuardCells = 4`, `NumRefCells = 2 * RefWindow`, `k = floor(NumRefCells / 3)`
+
+* **DBSCAN:**
+  `epsilon = 0.5` m/s (≈ 1.8 km/h), `minPts = 2`
+
+* **JPDA Tracker:**
+  `AssignmentThreshold = 5`, `ConfirmationThreshold = [4 6]`, `DeletionThreshold = [8 16]`
+
+* **Track Merging (Overlap-Based):**
+  `maxTimeGap = 1.5 s`, `maxSpeedGap = 0.5 m/s`
+
+* **Track Merging (Same-Velocity Gap):**
+  `maxTimeGap = 4 s`, `maxSpeedGap = 0.5 m/s`
+
+* **Track Discard:**
+  `T_min = 2.25 s` (minimum track duration retained)
+
+* **Classification:**
+  `threshold_dB = -22 dB`, `timeWindow = ±1.5 s`, `sMin = 3 m/s`, `sMax = 5 m/s`
+
 
 ---
 
-## Typical outputs (figures)
+## Notes
 
-* **Normalised Power Spectrogram (10–70 km/h)**
-* **Spectrogram with OS-CFAR detections**
-* **DBSCAN clustering:** cluster points, noise points, and representative detections
-* **Tracker results:** JPDA + CA-KF estimated speeds per track
-* **Merged tracks:** overlap-only, then overlap + same-velocity (final)
-* **Binary mask** used for ramp-width measurement
-* **Final merged tracks with representative radial-speed marker** and ramp-detection overlay
+* **Direction ("towards" / "away")** affects how the zero-speed crossing is extrapolated.
+* **Cosine correction** assumes a 2 m lateral offset (`D_perp = 2 m`); adjust if geometry differs.
+* **Units:** internal speeds are in m/s; all plots display km/h.
+* Works with any properly sampled radar IF signal (typically 44.1 kHz, 16-bit PCM).
 
 ---
 
-## Key parameters you may tune
+## Citation
 
-* **Spectrogram**
+If you use this repository, please cite:
 
-  * `frameLength = 4096;`
-  * `overlap = 0.5 * frameLength;`
-  * `windowFunction = hanning(frameLength);`
-* **Crop range:** `10–70 km/h`
-* **OS-CFAR**
-
-  * `PFA = 1e-6;`
-  * `RefWindow = 100;`
-  * `NumGuardCells = 4;`
-  * `k = floor((2*RefWindow)/3);`
-* **DBSCAN (1-D over speed in m/s)**
-
-  * `epsilon = 0.5;`  *(≈1.8 km/h)*
-  * `minPts  = 2;`
-* **Track merging**
-
-  * overlap merge thresholds inside `mergeTracksAllPassesAvg.m`
-  * gap merge: `maxTimeGap = 4;  maxSpeedGap = 0.5;` *(m/s)*
-* **Classification**
-
-  * Bounding box: `timeWindow = ±1.5 s`, speed band `3–5 m/s`
-  * Size thresholds: `<3`, `3–9.5`, `>9.5` (*normalised width = median time width × representative speed*)
-
----
-
-## Notes & conventions
-
-* **Direction matters.**
-  Set `direction = "towards"` when vehicles approach the radar; `"away"` when moving away.
-  This affects how the 0 m/s crossing is extrapolated and how representative speed is chosen.
-* **Cosine correction** is applied using the default lateral offset `D_perp = 2 m`. Adjust in the script if your geometry differs.
-* **Wavelength:** fixed at `λ = c / 24e9` for a 24 GHz radar.
-* All speeds shown on plots are **km/h**; internal processing is **m/s**.
-
----
-
-## Reproducing Chapter 3 order
-
-Run the eight WAVs **in the numbered order** above to mirror the progression in **Chapter 3** (prototype → improved amp → controlled → uncontrolled). Direction to set:
-
-| File                                    | Suggested `direction` |
-| --------------------------------------- | --------------------- |
-| 01_LM358_Car_away.wav                   | `"away"`              |
-| 02_AD620_Car_away.wav                   | `"away"`              |
-| 03_Motorbike_Car_towards.wav            | `"towards"`           |
-| 04_Control_1_Car_Motorcycle_away.wav    | `"away"`              |
-| 05_Control_2_Motorcycle_Car_towards.wav | `"towards"`           |
-| 06_Uncontrol_1_Bus_away.wav             | `"away"`              |
-| 07_Uncontrol_2_4Cars_away.wav           | `"away"`              |
-| 08_Uncontrol_3_2Cars_towards.wav        | `"towards"`           |
-
-(If your recordings differ, set the direction to match your scene.)
-
----
-
-## Troubleshooting
-
-* **“No detections found”** → Raise signal levels (check WAV), relax CFAR (higher PFA or smaller `RefWindow`), or verify the crop band (10–70 km/h) covers your speeds.
-* **Too many false alarms** → Lower PFA, increase guard cells, or increase detection threshold via OS-CFAR tuning (`k`, `RefWindow`).
-* **Fragmented tracks** → Loosen `AssignmentThreshold`, increase `DeletionThreshold`, or rely more on the two-stage merge settings.
-* **Classification = ‘Unknown’** → Ensure bounding box overlaps actual ramp (adjust `timeWindow`, `sMin/sMax`) and that the binary mask threshold (`threshold_dB`) isn’t too strict.
-
----
-
-## Citing
-
-If you use this code or the dataset, please cite the dissertation:
-
-> Kuming, D. *Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar*. MSc Dissertation, University of Cape Town, 2025.
+> Kuming, D. (2025). *Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar.* MSc Dissertation, University of Cape Town.
 
 ---
 
 ## License
 
-Choose a license (e.g., MIT) and place it in `LICENSE`.
+Choose and include an open-source license (e.g., MIT) as `LICENSE`.
 
 ---
 
 ## Acknowledgements
 
-Built on MATLAB toolboxes listed above and inspired by classic CFAR/JPDA literature. Huge thanks to **Dr. Yunus Abdul Gaffar** for supervision and guidance throughout the project.
+Developed under the supervision of **Dr Yunus Abdul Gaffar** (University of Cape Town).
+This MATLAB implementation extends and validates the CW Doppler radar system presented in Chapter 3 of the dissertation.
 
----
 
-## Quick FAQ
-
-* **Can I add my own WAVs?** Yes—drop them in the folder and set `wavFile` + `direction`. Keep sampling rate metadata intact.
-* **Do I need ground truth?** Not for the demo, but the dissertation validates speed against GPS in controlled trials.
-* **Can this run in real-time?** This repo shows the **offline** MATLAB back-end. The embedded real-time STFT logger (Teensy 4.1 + SGTL5000) is covered in Phase 2; post-processing code paths are present here.
-
+```
