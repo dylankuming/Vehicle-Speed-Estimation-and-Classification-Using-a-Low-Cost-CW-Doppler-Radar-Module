@@ -55,7 +55,9 @@ Each folder contains its own README detailing setup, requirements, parameters, a
   * Statistics and Machine Learning Toolbox
   * Sensor Fusion and Tracking Toolbox
   * Image Processing Toolbox
-* **TeensyDuino 1.59+ / Arduino IDE 1.8+** (for embedded code)
+* **Arduino IDE v2.0.4+**
+* **TeensyDuino 1.59.0+**
+* **[OpenAudio_ArduinoLibrary](https://github.com/chipaudette/OpenAudio_ArduinoLibrary/tree/master?tab=readme-ov-file#openaudio-library-for-teensy)** by Chip Audette
 * OS: Windows / macOS / Linux
 
 ---
