@@ -17,7 +17,5 @@ This project is licensed under the **MIT License** — see the [`LICENSE`](LICEN
 ## Acknowledgements
 
 Developed under the supervision of **Dr Yunus Abdul Gaffar** (University of Cape Town).
-This MATLAB implementation extends and validates the CW Doppler radar system presented in Chapter 3 of the dissertation.
-
 
 ```
