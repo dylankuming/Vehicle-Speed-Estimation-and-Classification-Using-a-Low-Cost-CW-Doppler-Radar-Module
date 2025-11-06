@@ -149,7 +149,7 @@ If you use this repository, please cite:
 
 ## License
 
-This project is licensed under the **MIT License** — see the [`LICENSE`](LICENSE) file for details.
+This project is licensed under the **MIT License** — see the [`https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/blob/main/LICENSE`](LICENSE) file for details.
 
 ---
 
