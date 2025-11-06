@@ -12,8 +12,8 @@ The project demonstrates a complete **low-cost radar-based vehicle monitoring sy
 
 The repository is organized into three main components:
 
-| Folder                    | Description                                                                                                                                     |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Folder                          | Description                                                                                                                                     |
+| --------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[Phase 1 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%201%20MATLAB%20code)**  | Offline MATLAB processing and validation (Chapter 3) — performs detection, clustering, tracking, and classification on WAV recordings.          |
 | **[Phase 2 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20MATLAB%20code)**  | Embedded-system validation (Chapter 4) — applies the same processing pipeline to data acquired directly from the Teensy 4.1 logger.             |
 | **[Phase 2 Teensyduino code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20Teensyduino%20code)** | C++ firmware for the Teensy 4.1 + SGTL5000 audio shield — captures Doppler radar signals, performs real-time FFTs, and logs results to SD card. |
