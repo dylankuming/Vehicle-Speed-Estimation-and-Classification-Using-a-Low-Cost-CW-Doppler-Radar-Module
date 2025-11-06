@@ -43,7 +43,7 @@ Connections:
 
 * **Arduino IDE 1.8+** or **Teensy IDE**
 * **TeensyDuino 1.59+**
-* **OpenAudio_ArduinoLibrary** by Chip Audette
+* **[OpenAudio_ArduinoLibrary](https://github.com/chipaudette/OpenAudio_ArduinoLibrary/tree/master?tab=readme-ov-file#openaudio-library-for-teensy)** by Chip Audette
 * **AudioStream_F32** (included with OpenAudio)
 * **SD** and **EEPROM** libraries (built-in)
 
