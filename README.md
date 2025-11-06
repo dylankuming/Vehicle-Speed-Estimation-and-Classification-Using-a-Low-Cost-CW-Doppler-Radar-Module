@@ -26,12 +26,12 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 
 ### 1. Hardware
 
-| Component                              | Function                                                                    |
-| -------------------------------------- | --------------------------------------------------------------------------- |
-| **InnoSenT IPM-365 24 GHz CW Radar**   | Provides the baseband Doppler signal proportional to target radial velocity |
-| **AD620 / LM358 Amplifier**            | Boosts baseband signal for ADC input                                        |
-| **Teensy 4.1 + SGTL5000 Audio Shield** | Handles real-time digitisation and spectrogram logging                      |
-| **PC / MATLAB**                        | Performs signal processing, detection, tracking, and classification         |
+| Component                                 | Function                                                                    |
+| ------------------------------------------| --------------------------------------------------------------------------- |
+| **InnoSenT IPM-365 24 GHz CW Radar**      | Provides the baseband Doppler signal proportional to target radial velocity |
+| **AD620 / LM358 Amplifier**               | Boosts baseband signal for ADC input                                        |
+| **Teensy 4.1 + SGTL5000 Audio Shield**    | Handles real-time digitisation and spectrogram logging                      |
+| **PC / MATLAB**                           | Performs signal processing, detection, tracking, and classification         |
 
 ---
 
