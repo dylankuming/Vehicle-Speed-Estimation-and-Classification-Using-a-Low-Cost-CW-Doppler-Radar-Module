@@ -77,7 +77,7 @@ The full radar signal-processing pipeline includes:
 3. At the top of the file, set the WAV filename and direction:
 
    ```matlab
-   wavFile   = '08_Uncontrol_3_2Cars_towards.wav';
+   wavFile   = '05_Control_2_Motorcycle_Car_towards.wav';
    direction = "towards";   % or "away"
    ```
 
