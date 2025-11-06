@@ -149,9 +149,10 @@ If you use this repository, please cite:
 
 ## License
 
-Choose and include an open-source license (e.g., MIT) as `LICENSE`.
+This project is licensed under the **MIT License** — see the [`LICENSE`](LICENSE) file for details.
 
 ---
+
 
 ## Acknowledgements
 
