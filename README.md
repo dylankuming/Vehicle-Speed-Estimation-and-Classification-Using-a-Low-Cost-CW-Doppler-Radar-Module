@@ -66,7 +66,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 
 1. **Phase 1 (Offline MATLAB)**
 
-   * Open `Phase_1_MATLAB_Code/runPhase1.m`
+   * Open [`runPhase1.m`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/blob/main/Phase%201%20MATLAB%20code/runPhase1.m)
    * Select a WAV file (e.g., `05_Control_2_Motorcycle_Car_towards.wav`)
    * Set `direction = "towards"` or `"away"` and run the script
 
