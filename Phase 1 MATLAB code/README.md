@@ -56,7 +56,7 @@ The full radar signal-processing pipeline includes:
 
 | Script                              | Purpose                                                        |
 | ----------------------------------- | -------------------------------------------------------------- |
-| **demo_main.m**                     | Main end-to-end pipeline                                       |
+|  **runPhase1.m**                    | Main end-to-end pipeline                                       |
 | **powerSpectrogram.m**              | Computes STFT → power spectrogram                              |
 | **oscfarDetector.m**                | Column-wise OS-CFAR detection                                  |
 | **solveAlphaOS.m**                  | Solves OS-CFAR scaling factor                                  |
@@ -64,7 +64,7 @@ The full radar signal-processing pipeline includes:
 | **mergeTracksAllPassesAvg.m**       | Overlap-based track merge                                      |
 | **mergeTracksSameVelocityGap.m**    | Same-velocity short-gap merge                                  |
 | **computeVehicleSpeedWithExtrap.m** | Calculates representative speed and extrapolated zero-crossing |
-| **runPhase1.m**                     |**main script**                               |
+
 
 ---
 
