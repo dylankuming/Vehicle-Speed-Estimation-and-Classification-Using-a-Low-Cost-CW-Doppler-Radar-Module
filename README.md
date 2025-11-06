@@ -81,25 +81,6 @@ Each folder contains its own README detailing setup, requirements, parameters, a
    * Flash to Teensy 4.1 using TeensyDuino
    * Recorded `.BIN` files will be saved on the SD card as `RECXXXX.BIN`
 
----
-
-## Example Outputs
-
-| Stage              | Output                                           |
-| ------------------ | ------------------------------------------------ |
-| **Spectrogram**    | Power Doppler map (10–70 km/h)                   |
-| **Detection**      | OS-CFAR “x” overlays on spectrogram              |
-| **Clustering**     | DBSCAN clusters (red = detections, blue = noise) |
-| **Tracking**       | JPDA + CA Kalman tracks, each in unique colour   |
-| **Classification** | Final vehicle table with class labels            |
-
-Example result table:
-
-```
-Vehicle  Speed (m/s)  Speed (km/h)  Time. Width  Norm. Width  Direction  Class
-1        12.34        44.42         1.25         8.65         towards    Car/Minibus
-2         6.11        22.00         0.85         2.50         towards    Motorbike/Bicycle
-```
 
 ---
 
