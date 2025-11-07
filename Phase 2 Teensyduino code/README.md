@@ -46,6 +46,6 @@ Each frame is saved as raw 32-bit floating-point values to a `.BIN` file on the 
 | `windowFunction`   | Hanning         | FFT window                           |
 | `setOutputType()`  | `FFT_POWER`     | Output mode (`POWER`, `RMS`, `DBFS`) |
 | `lineInLevel()`    | 15              | ADC full-scale input (0 – 15)                  |
-| `flushCounter`     | Every 64 frames | SD flush interval                    |
+| `flushCounter`     | Every 64 frames (~3 sec) | SD flush interval                    |
 
 ---
