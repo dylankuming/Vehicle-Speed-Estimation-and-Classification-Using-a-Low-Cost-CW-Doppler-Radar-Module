@@ -34,7 +34,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 * **Arduino IDE v2.0.4+**
 * **TeensyDuino 1.59.0+**
 * **[OpenAudio_ArduinoLibrary](https://github.com/chipaudette/OpenAudio_ArduinoLibrary/tree/master?tab=readme-ov-file#openaudio-library-for-teensy)** by Chip Audette
-* OS: Windows / macOS / Linux
+
 
 ---
 
