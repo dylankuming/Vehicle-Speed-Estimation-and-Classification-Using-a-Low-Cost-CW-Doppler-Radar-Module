@@ -37,6 +37,25 @@ Three sample `.bin` recordings are included—identical to those used in **Chapt
 
 ---
 
+---
+### Accessing the Reference BIN Recordings
+
+Due to GitHub’s file-size limit, the three reference `.bin` recordings used in Phase 2 are hosted externally on OneDrive.
+
+📂 **Download all recordings here:**  
+[Open OneDrive folder (Radar Recordings – Phase 2)](https://1drv.ms/f/c/e7b851d77e25a67e/Ety4YTov5G5HuUIxn-jq9TwBO-RcUHev4Lw48Tf9dcHDjQ?e=oUw4Rd)
+
+These files correspond to the examples listed below and can be used directly with the provided MATLAB scripts.
+
+### Reference BIN Recordings (Examples)
+
+| File                                  | Description                         | Suggested `direction` |
+| ------------------------------------- | ----------------------------------- | --------------------- |
+| 01_Phase2_Car_away.bin                | Controlled short run of a car       | "away"                |
+| 02_Phase2_uncontrol_30min_towards.bin | 30-min uncontrolled test (towards)  | "towards"             |
+| 03_Phase2_uncontrol_30min_away.bin    | 30-min uncontrolled test (away)     | "away"                |
+
+
 ### Reference BIN Recordings (Examples)
 
 | File                                  | Description                         | Suggested `direction` |
