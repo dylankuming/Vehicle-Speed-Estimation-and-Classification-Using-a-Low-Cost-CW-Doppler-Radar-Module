@@ -1,51 +1,26 @@
 # Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar
 
 This repository contains all code and resources developed for the MSc dissertation
-**“Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar System”**
+**“Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar”**
 by **Dylan Kuming**, University of Cape Town (2025).
-
-The project demonstrates a complete **low-cost radar-based vehicle monitoring system**, combining real-time data acquisition, signal processing, multi-target tracking, and vehicle classification — all implemented using accessible hardware and MATLAB toolchains.
 
 ---
 
 ## Repository Overview
 
-The repository is organized into three main components:
+The repository is organised into three main components:
 
 | Folder                          | Description                                                                                                                                     |
 | --------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[Phase 1 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%201%20MATLAB%20code)**  | Offline MATLAB processing and validation (Chapter 3) — performs detection, clustering, tracking, and classification on WAV recordings.          |
-| **[Phase 2 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20MATLAB%20code)**  | Embedded-system validation (Chapter 4) — applies the same processing pipeline to data acquired directly from the Teensy 4.1 logger.             |
-| **[Phase 2 Teensyduino code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20Teensyduino%20code)** | C++ firmware for the Teensy 4.1 + SGTL5000 audio shield — captures Doppler radar signals, performs real-time FFTs, and logs results to SD card. |
+| **[Phase 1 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%201%20MATLAB%20code)**  | Offline MATLAB processing and validation (Chapter 3) — performs spectrogram generation, detection, clustering, tracking, and classification on `.WAV` recordings.          |
+| **[Phase 2 Teensyduino code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20Teensyduino%20code)** | C++ firmware for the Teensy 4.1 + SGTL5000 audio codec — performs real-time 4096-point FFTs and logs consecutive FFT power spectra (2048 float bins per frame) to the SD card as a binary `.BIN` file for offline spectrogram reconstruction and analysis. |
+| **[Phase 2 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20MATLAB%20code)**  |Embedded-system validation (Chapter 4) — reconstructs the spectrogram from the `.BIN` file before re-applying the Phase 1 processing pipeline, incorporating refinements to clustering and classification.       |
+
 
 Each folder contains its own README detailing setup, requirements, parameters, and usage.
 
 ---
 
-## System Overview
-
-### 1. Hardware
-
-| Component                                 | Function                                                                    |
-| ------------------------------------------| --------------------------------------------------------------------------- |
-| **InnoSenT IPM-365 24 GHz CW Radar**      | Provides the baseband Doppler signal proportional to target radial velocity |
-| **AD620 / LM358 Amplifier**               | Boosts baseband signal for ADC input                                        |
-| **Teensy 4.1 + SGTL5000 Audio Shield**    | Handles real-time digitisation and spectrogram logging                      |
-| **PC / MATLAB**                           | Performs signal processing, detection, tracking, and classification         |
-
----
-
-### 2. Software Pipeline
-
-1. **Signal Acquisition** – Raw baseband I/Q data recorded via Teensy 4.1
-2. **Spectrogram Generation** – Short-Time Fourier Transform (STFT)
-3. **Target Detection** – Ordered-Statistic CFAR (OS-CFAR)
-4. **Clustering** – 1-D DBSCAN to group detections per frame
-5. **Tracking** – JPDA + CA Kalman filter for multi-target tracking
-6. **Track Merging** – Overlap and same-velocity gap merging
-7. **Classification** – Rule-based using normalised Doppler ramp width
-
----
 
 ## Requirements
 
