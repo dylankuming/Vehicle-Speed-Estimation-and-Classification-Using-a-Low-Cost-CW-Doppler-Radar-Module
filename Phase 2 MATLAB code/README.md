@@ -36,11 +36,11 @@ The pipeline reconstructs a power spectrogram from a `.bin` file written by the 
 
 ### Reference BIN Recordings (Examples)
 
-| File                               | Description                         | Suggested `direction` |
-| ---------------------------------- | ----------------------------------- | --------------------- |
-| 01_Phase2_control_towards.bin      | Controlled short run (towards)      | "towards"             |
-| 02_Phase2_control_away.bin         | Controlled short run (away)         | "away"                |
-| 03_Phase2_uncontrol_30min_away.bin | 30-min uncontrolled roadside (away) | "away"                |
+| File                                  | Description                         | Suggested `direction` |
+| ------------------------------------- | ----------------------------------- | --------------------- |
+| 01_Phase2_Car_away.bin                | Controlled short run of a car       | "away"                |
+| 02_Phase2_uncontrol_30min_towards.bin | 30-min uncontrolled test (towards)  | "towards"             |
+| 03_Phase2_uncontrol_30min_away.bin    | 30-min uncontrolled test (away)     | "away"                |
 
 > Any valid Teensy-generated `.bin` with 4096-pt, 50%-overlap FFT frames will work, provided the **script parameters match the firmware** (`fs`, `frameLength`, `overlap`).
 
