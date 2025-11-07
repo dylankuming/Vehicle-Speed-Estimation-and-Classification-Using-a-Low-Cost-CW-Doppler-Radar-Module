@@ -18,7 +18,7 @@ Eight sample recordings are included—identical to those used in **Chapter 3** 
 6. **Speed estimation** — including cosine-angle correction
 7. **Classification** — rule-based using normalised Doppler-ramp width
 
-   * `< 3` → *Motorbike/Bicycle*
+   * `< 3` → *Motorcycle/Bicycle*
    * `3 – 9.5` → *Car/Minibus*
    * `> 9.5` → *Bus/Truck*
 
