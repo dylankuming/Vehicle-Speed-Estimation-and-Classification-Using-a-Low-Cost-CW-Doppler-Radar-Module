@@ -46,7 +46,7 @@ Eight sample `.wav` recordings are included—identical to those used in **Chapt
 | 02_AD620_Car_away.wav                   | Improved amplifier test      | "away"                |
 | 03_Motorbike_Car_towards.wav            | Controlled two-vehicle trial | "towards"             |
 | 04_Control_1_Car_Motorcycle_away.wav    | Controlled trial             | "away"                |
-| 05_Control_2_Motorcycle_Car_towards.wav | Controlled trial             | "towards"             |
+| 05_Control_2_Car_Motorcycle_towards.wav | Controlled trial             | "towards"             |
 | 06_Uncontrol_1_Bus_away.wav             | Uncontrolled roadside trial  | "away"                |
 | 07_Uncontrol_2_4Cars_away.wav           | Uncontrolled roadside trial  | "away"                |
 | 08_Uncontrol_3_2Cars_towards.wav        | Uncontrolled roadside trial  | "towards"             |
