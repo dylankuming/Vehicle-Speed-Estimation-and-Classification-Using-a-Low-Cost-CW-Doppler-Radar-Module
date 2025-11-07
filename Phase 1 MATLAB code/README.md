@@ -138,6 +138,5 @@ Vehicle  Speed (m/s)  Speed (km/h)  Time. Width  Norm. Width  Direction  Class
 * **Direction ("towards" / "away")** affects how the zero-speed crossing is extrapolated.
 * **Cosine correction** assumes a 2 m lateral offset (`D_perp = 2 m`); adjust if geometry differs.
 * **Units:** internal speeds are in m/s; all plots display km/h.
-* Works with any properly sampled radar IF signal (typically 44.1 kHz, 16-bit PCM).
 
 ---
