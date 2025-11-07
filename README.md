@@ -64,22 +64,22 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 
 ## Publications
 
-Portions of this work were presented at the [IEEE AFRICON 2025 CONFERENCE](https://www.ul.ac.za/ieee-africon-2025-conference/) under the title:
+Portions of this work were presented at the [IEEE AFRICON 2025 CONFERENCE](https://www.ul.ac.za/ieee-africon-2025-conference/) under the title:<br>
 *“Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar.”*
 
 ---
 
 ## License
 
-This repository is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+This repository is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.<br>
 All MATLAB and firmware code are released for academic and research use.
 
 ---
 
 ## Acknowledgements
 
-Developed by **Dylan Kuming**
-Supervised by **Dr Yunus Abdul Gaffar**
+Developed by **Dylan Kuming**<br>
+Supervised by **Dr Yunus Abdul Gaffar**<br>
 *Radar Remote Sensing Group, University of Cape Town*
 
 This project forms part of ongoing research into **low-cost intelligent traffic sensing** using CW Doppler radar technology.
