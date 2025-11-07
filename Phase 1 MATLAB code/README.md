@@ -1,24 +1,26 @@
-# CW Doppler Radar: Speed, Tracking & Classification (MATLAB)
-This repository contains MATLAB code for processing continuous-wave (CW) Doppler radar recordings to perform **vehicle speed estimation**, **multi-target tracking (JPDA + CA Kalman filter)**, and **rule-based vehicle classification**.
+# Phase 1 MATLAB Code
 
-The script runs on **any valid radar WAV file**, provided it contains a baseband Doppler signal from a 24 GHz CW radar.  
-Eight reference recordings are included in the repository — the same examples used for the demonstrations, testing, and results presented in **Chapter 3** of the MSc dissertation. Running them will reproduce the figures and behaviour described there.
+This folder contains MATLAB scripts for processing **continuous-wave (CW) Doppler radar recordings** to perform **vehicle speed estimation**, **multi-target tracking**, and **rule-based vehicle classification**.
+
+The pipeline converts a baseband Doppler signal from a 24 GHz CW radar (stored as a `.wav` file) into continuous vehicle trajectories and final class labels. It integrates short-time Fourier transform (STFT) spectrogram generation, Ordered-Statistic CFAR detection, 1-D DBSCAN clustering, JPDA-based multi-target tracking with a Constant-Acceleration (CA) Kalman filter, and ramp-width-based classification.
+
+Eight sample recordings are included—identical to those used in **Chapter 3** of the MSc dissertation—allowing direct reproduction of the results and figures presented there.
 
 ---
 
-## Overview
+## Processing Pipeline
 
-The full radar signal-processing pipeline includes:
-1. **Spectrogram generation** using the short-time Fourier transform (STFT)
-2. **Target detection** via Ordered-Statistic CFAR (OS-CFAR)
-3. **Per-frame clustering** using 1-D DBSCAN
-4. **Multi-target tracking (MTT)** with a Joint Probabilistic Data Association (JPDA) tracker and a Constant-Acceleration (CA) Kalman filter
-5. **Track merging** (overlap + same-velocity short-gap)
-6. **Speed estimation** with cosine-angle correction
-7. **Vehicle classification** using normalised Doppler-ramp width
-  * `< 3` → *Motorbike/Bicycle*
-  * `3–9.5` → *Car/Minibus*
-  * `> 9.5` → *Bus/Truck*
+1. **Spectrogram generation** — STFT-based time–frequency analysis
+2. **Target detection** — Ordered-Statistic CFAR (OS-CFAR)
+3. **Clustering** — 1-D DBSCAN per time frame
+4. **Multi-target tracking** — JPDA with a CA Kalman filter
+5. **Track merging** — overlap- and velocity-gap-based consolidation
+6. **Speed estimation** — including cosine-angle correction
+7. **Classification** — rule-based using normalised Doppler-ramp width
+
+   * `< 3` → *Motorbike/Bicycle*
+   * `3 – 9.5` → *Car/Minibus*
+   * `> 9.5` → *Bus/Truck*
 
 ---
 
@@ -28,6 +30,7 @@ The full radar signal-processing pipeline includes:
 * Toolboxes:
 
   * **Signal Processing Toolbox** (STFT, windows)
+  * **Symbolic Math Toolbox** (`vpasolve`) 
   * **Statistics and Machine Learning Toolbox** (`dbscan`)
   * **Sensor Fusion and Tracking Toolbox** (`trackerJPDA`, `objectDetection`)
   * **Image Processing Toolbox** (`bwareaopen`)
