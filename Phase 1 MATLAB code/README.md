@@ -4,7 +4,7 @@ This folder contains MATLAB scripts for processing **continuous-wave (CW) Dopple
 
 The pipeline converts a baseband Doppler signal from a 24 GHz CW radar (stored as a `.wav` file) into continuous vehicle trajectories and final class labels. It integrates short-time Fourier transform (STFT) spectrogram generation, Ordered-Statistic CFAR detection, 1-D DBSCAN clustering, JPDA-based multi-target tracking with a Constant-Acceleration (CA) Kalman filter, and ramp-width-based classification.
 
-Eight sample recordings are included—identical to those used in **Chapter 3** of the MSc dissertation—allowing direct reproduction of the results and figures presented there.
+Eight sample `.wav` recordings are included—identical to those used in **Chapter 3** of the MSc dissertation—allowing direct reproduction of the results and figures presented there.
 
 ---
 
