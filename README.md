@@ -27,6 +27,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 * **MATLAB R2022b** or later
 
   * Signal Processing Toolbox
+  * Symbolic Math Toolbox
   * Statistics and Machine Learning Toolbox
   * Sensor Fusion and Tracking Toolbox
   * Image Processing Toolbox
