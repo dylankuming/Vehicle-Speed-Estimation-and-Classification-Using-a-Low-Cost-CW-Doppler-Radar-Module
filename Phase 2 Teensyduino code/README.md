@@ -39,13 +39,14 @@ Each frame is saved as raw 32-bit floating-point values to a `.BIN` file on the 
 
 ## Key Parameters (Editable)
 
-| Parameter          | Default         | Description                          |
-|--------------------|-----------------|--------------------------------------|
-| `RECORD_MS`        | 1800 ms (30 min)       | Recording duration                   |
-| `FFT size`         | 4096            | Number of FFT points                 |
-| `windowFunction`   | Hanning         | FFT window                           |
-| `setOutputType()`  | `FFT_POWER`     | Output mode (`POWER`, `RMS`, `DBFS`) |
-| `lineInLevel()`    | 15              | ADC full-scale input (0 – 15)                  |
-| `flushCounter`     | Every 64 frames (~3 sec) | SD flush interval                    |
+| Parameter          | Default Value          | Description                                                        |
+|--------------------|------------------------|--------------------------------------------------------------------|
+| `RECORD_MS`        | 1,800,000 ms (30 min)  | Total recording duration                                           |
+| `FFT size`         | 4096                   | Number of FFT points per frame                                     |
+| `windowFunction`   | Hanning                | Window applied before FFT                                          |
+| `setOutputType()`  | `FFT_POWER`            | FFT output mode (`POWER`, `RMS`, or `DBFS`)                        |
+| `lineInLevel()`    | 15                     | Line-input level (0 - 15) |
+| `flushCounter`     | Every 64 frames (~3 s) | SD flush interval for data integrity                               |
+
 
 ---
