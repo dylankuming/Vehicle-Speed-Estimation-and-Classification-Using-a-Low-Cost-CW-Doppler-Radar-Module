@@ -98,10 +98,10 @@ The program will:
 ```
 Total Vehicles Detected: 2
 
-Vehicle  Speed (m/s)     Speed (km/h)    Time. Width (s) Norm. Width (m) Direction    Class       
+Vehicle  Speed (m/s)     Speed (km/h)    Time. Width (s)   Norm. Width (m)   Direction    Class       
 ----------------------------------------------------------------------------------------------------
-1        13.07           47.06           0.43            5.58            towards      Car/Minibus 
-2        9.29            33.44           0.17            1.59            towards      Motorbike/Bicycle
+1        13.07           47.06           0.43              5.58              towards      Car/Minibus 
+2        9.29            33.44           0.17              1.59              towards      Motorbike/Bicycle
 ```
 
 ---
