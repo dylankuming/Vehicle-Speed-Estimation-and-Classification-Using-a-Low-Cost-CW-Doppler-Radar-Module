@@ -64,7 +64,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 
 ## Publications
 
-Portions of this work were presented at **IEEE AFRICON 2025** under the title:
+Portions of this work were presented at the [IEEE AFRICON 2025 CONFERENCE](https://www.ul.ac.za/ieee-africon-2025-conference/) under the title:
 *“Vehicle Speed Estimation and Classification Using a Low-Cost Continuous-Wave Doppler Radar.”*
 
 ---
