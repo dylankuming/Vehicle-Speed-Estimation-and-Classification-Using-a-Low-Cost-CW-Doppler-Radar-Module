@@ -80,7 +80,7 @@ Eight sample `.wav` recordings are included—identical to those used in **Chapt
 3. At the top of the file, set the WAV filename and direction:
 
    ```matlab
-   wavFile   = '05_Control_2_Motorcycle_Car_towards.wav';
+   wavFile   = '05_Control_2_Car_Motorcycle_towards.wav';
    direction = "towards";   % or "away"
    ```
 
@@ -98,10 +98,10 @@ The program will:
 ```
 Total Vehicles Detected: 2
 
-Vehicle  Speed (m/s)  Speed (km/h)  Time. Width (s)  Norm. Width (m)  Direction  Class
-1        12.34        44.42         1.25             8.65             towards    Car/Minibus
-2        6.11         22.00         0.85             2.50             towards    Motorbike/Bicycle
-
+Vehicle  Speed (m/s)     Speed (km/h)    Time. Width (s) Norm. Width (m) Direction    Class       
+----------------------------------------------------------------------------------------------------
+1        13.07           47.06           0.43            5.58            towards      Car/Minibus 
+2        9.29            33.44           0.17            1.59            towards      Motorbike/Bicycle
 ```
 
 ---
