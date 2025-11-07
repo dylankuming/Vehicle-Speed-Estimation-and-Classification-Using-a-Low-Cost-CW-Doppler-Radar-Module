@@ -111,7 +111,7 @@ allNoiseTimes   = [];             % For visualisation only
 allNoiseSpeeds  = [];             % For visualisation only
 
 % DBSCAN parameters (1D in m/s) 
-epsilon = 0.5;  % 1.8 km/h
+epsilon = ;  % 1.8 km/h
 minPts  = 2;
 
 for col = 1:Cols
@@ -305,7 +305,7 @@ hold off;
 % Merge partial or overlapping tracks that likely represent the same vehicle 
 % if they have sufficient time overlap and minimal speed difference.
 
-mergedTrackHistories_overlap = mergeTracksAllPassesAvg(trackHistories, 0.5, 1.5);
+mergedTrackHistories_overlap = mergeTracksAllPassesAvg(trackHistories, , 1.5);
 
 %% A) Plot Merged Tracks (Overlap-Based Only)
 
@@ -314,8 +314,8 @@ hold on;
 for i = 1:length(mergedTrackHistories_overlap)
     history = mergedTrackHistories_overlap{i};
     
-    % Only plot tracks lasting more than 0.5 seconds
-    if max(history(:,1)) - min(history(:,1)) > 0.5
+    % Only plot tracks lasting more than 0.75 seconds
+    if max(history(:,1)) - min(history(:,1)) > 0.75
         plot(history(:,1), history(:,2)*3.6, '-o', 'LineWidth', 1.5, ...
              'DisplayName', sprintf('Merged Track %d', i));
     end
@@ -609,4 +609,5 @@ for k = 1:numVehicles
     fprintf('%-8d %-15.2f %-15.2f %-15.2f %-15.2f %-12s %-12s\n', ...
         k, allSpeeds(k),allSpeeds(k)*3.6, detWidth(k), normWidth(k), direction, vehicleClasses{k});
 end
+
 
