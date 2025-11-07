@@ -96,6 +96,8 @@ The program will:
 ## Example Output
 
 ```
+Total Vehicles Detected: 2
+
 Vehicle  Speed (m/s)  Speed (km/h)  Time. Width  Norm. Width  Direction  Class
 1        12.34        44.42         1.25         8.65         towards    Car/Minibus
 2        6.11         22.00         0.85         2.50         towards    Motorbike/Bicycle
