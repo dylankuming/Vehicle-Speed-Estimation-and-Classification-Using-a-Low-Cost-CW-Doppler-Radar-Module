@@ -1,4 +1,4 @@
-# CW Doppler Radar: Embedded Real-Time Processing (MATLAB – Phase 2)
+# Phase 2 MATLAB Code
 
 This folder contains MATLAB code used in **Phase 2** of the project — corresponding to **Chapter 4** of the MSc dissertation — which validates the embedded CW Doppler radar platform under extended real-time roadside conditions.
 
