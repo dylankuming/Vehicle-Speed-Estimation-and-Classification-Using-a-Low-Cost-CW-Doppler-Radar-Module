@@ -12,9 +12,9 @@ The repository is organised into three main components:
 
 | Folder                          | Description                                                                                                                                     |
 | --------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[Phase 1 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%201%20MATLAB%20code)**  | Offline MATLAB processing and validation (Chapter 3) — performs spectrogram generation, detection, clustering, tracking, and classification on `.WAV` recordings.          |
-| **[Phase 2 Teensyduino code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20Teensyduino%20code)** | C++ firmware for the Teensy 4.1 + SGTL5000 audio codec — performs real-time 4096-point FFTs and logs consecutive FFT power spectra (2048 float bins per frame) to the SD card as a binary `.BIN` file for offline spectrogram reconstruction and analysis. |
-| **[Phase 2 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20MATLAB%20code)**  |Embedded-system validation (Chapter 4) — reconstructs the spectrogram from the `.BIN` file before re-applying the Phase 1 processing pipeline, incorporating refinements to clustering and classification.       |
+| **[Phase 1 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%201%20MATLAB%20code)**  | Offline MATLAB processing and validation (Chapter 3) — performs spectrogram generation, detection, clustering, tracking, and classification on `.wav` recordings.          |
+| **[Phase 2 Teensyduino code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20Teensyduino%20code)** | C++ firmware for the Teensy 4.1 + SGTL5000 audio codec — performs real-time 4096-point FFTs and logs consecutive FFT power spectra (2048 float bins per frame) to the SD card as a binary `.bin` file for offline spectrogram reconstruction and analysis. |
+| **[Phase 2 MATLAB code](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/tree/main/Phase%202%20MATLAB%20code)**  |Embedded-system validation (Chapter 4) — reconstructs the spectrogram from the `.bin` file before re-applying the Phase 1 processing pipeline, incorporating refinements to clustering and classification.       |
 
 
 Each folder contains its own README detailing setup, requirements, parameters, and usage.
@@ -51,7 +51,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
    * Open [`Phase2_Teensy_FFTLogger_4096.ino`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar/blob/main/Phase%202%20Teensyduino%20code/Phase2_Teensy_FFTLogger_4096/Phase2_Teensy_FFTLogger_4096.ino) in the Arduino IDE.  
    * Compile and upload the sketch to the **Teensy 4.1** with the **SGTL5000 audio shield** attached.  
    * During operation, the firmware logs real-time FFT power spectra to the onboard SD card.  
-   * Each recording is saved as a binary file (`RECxxxx.BIN`) for later reconstruction in MATLAB.
+   * Each recording is saved as a binary file (`RECxxxx.bin`) for later reconstruction in MATLAB.
   
  3. **Phase 2 (Embedded Validation)**
 
