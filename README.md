@@ -51,7 +51,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
    * Open [`Phase2_Teensy_FFTLogger_4096.ino`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar/blob/main/Phase%202%20Teensyduino%20code/Phase2_Teensy_FFTLogger_4096/Phase2_Teensy_FFTLogger_4096.ino) in the Arduino IDE.  
    * Compile and upload the sketch to the **Teensy 4.1** with the **SGTL5000 audio shield** attached.  
    * During operation, the firmware logs real-time FFT power spectra to the onboard SD card.  
-   * Each recording is saved as a binary file (`RECxxxx.bin`) for later reconstruction in MATLAB.
+   * Each recording is saved as a binary file (`RECxxxx.bin`) for later reconstruction in MATLAB (see [`runPhase2.m`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar/blob/main/Phase%202%20MATLAB%20code/runPhase2.m)).
   
  3. **Phase 2 (Embedded Validation)**
 
