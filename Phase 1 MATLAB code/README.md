@@ -34,7 +34,7 @@ Eight sample recordings are included—identical to those used in **Chapter 3** 
   * **Statistics and Machine Learning Toolbox** (`dbscan`)
   * **Sensor Fusion and Tracking Toolbox** (`trackerJPDA`, `objectDetection`)
   * **Image Processing Toolbox** (`bwareaopen`)
-* OS: Windows/macOS/Linux
+
 
 ---
 
