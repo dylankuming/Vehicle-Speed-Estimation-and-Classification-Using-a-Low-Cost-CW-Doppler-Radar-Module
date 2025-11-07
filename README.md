@@ -43,7 +43,7 @@ Each folder contains its own README detailing setup, requirements, parameters, a
 1. **Phase 1 (Offline MATLAB)**
 
    * Open [`runPhase1.m`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar-Module/blob/main/Phase%201%20MATLAB%20code/runPhase1.m)
-   * Select a WAV file (e.g., `05_Control_2_Motorcycle_Car_towards.wav`)
+   * Select a `.wav` file (e.g., `05_Control_2_Motorcycle_Car_towards.wav`)
    * Set `direction = "towards"` or `"away"` and run the script
 
 2. **Teensy Firmware**
@@ -55,8 +55,9 @@ Each folder contains its own README detailing setup, requirements, parameters, a
   
  3. **Phase 2 (Embedded Validation)**
 
-   * Open `Phase_2_MATLAB_Code/runPhase2.m`
-   * Select a Teensy-recorded WAV file and run to reproduce Chapter 4 results
+   * Open [`runPhase2.m`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar/blob/main/Phase%202%20MATLAB%20code/runPhase2.m)
+   * Select a `.bin` file (e.g., `02_Phase2_uncontrol_30min_towards.bin`)
+   * Set `direction = "towards"` or `"away"` and run the script
 
 
 ---
