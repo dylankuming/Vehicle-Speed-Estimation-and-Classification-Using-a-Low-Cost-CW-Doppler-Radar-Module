@@ -46,16 +46,17 @@ Each folder contains its own README detailing setup, requirements, parameters, a
    * Select a WAV file (e.g., `05_Control_2_Motorcycle_Car_towards.wav`)
    * Set `direction = "towards"` or `"away"` and run the script
 
-2. **Phase 2 (Embedded Validation)**
+2. **Teensy Firmware**
+
+   * Open [`Phase2_Teensy_FFTLogger_4096.ino`](https://github.com/dylankuming/Vehicle-Speed-Estimation-and-Classification-Using-a-Low-Cost-CW-Doppler-Radar/blob/main/Phase%202%20Teensyduino%20code/Phase2_Teensy_FFTLogger_4096/Phase2_Teensy_FFTLogger_4096.ino) in the Arduino IDE.  
+   * Compile and upload the sketch to the **Teensy 4.1** with the **SGTL5000 audio shield** attached.  
+   * During operation, the firmware logs real-time FFT power spectra to the onboard SD card.  
+   * Each recording is saved as a binary file (`RECxxxx.BIN`) for later reconstruction in MATLAB.
+  
+ 3. **Phase 2 (Embedded Validation)**
 
    * Open `Phase_2_MATLAB_Code/runPhase2.m`
    * Select a Teensy-recorded WAV file and run to reproduce Chapter 4 results
-
-3. **Teensy Firmware**
-
-   * Open `Teensy_Embedded_Code/TeensyRadarLogger.ino`
-   * Flash to Teensy 4.1 using TeensyDuino
-   * Recorded `.BIN` files will be saved on the SD card as `RECXXXX.BIN`
 
 
 ---
