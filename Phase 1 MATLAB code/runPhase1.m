@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Set WAV file and direction paramaters
-wavFile = '05_Control_2_Motorcycle_Car_towards.wav';
+wavFile = '05_Control_2_Car_Motorcycle_towards.wav';
 direction = "towards";           % <-- set manually: "towards" or "away"
 
 %%  Load recording
@@ -46,7 +46,8 @@ ylabel('Speed (km/h)');
 title('Normalised Power Spectrogram (10–70 km/h)');
 colormap jet;
 colorbar;
-% xlim([0,15]); 
+%xlim([0,20]);      
+ylim([10,70]);     
 
 % Parameters for OS-CFAR
 PFA = 1e-6;             % Probability of False Alarm
@@ -92,7 +93,7 @@ ylabel('Speed (km/h)');
 title('Spectrogram with OS-CFAR Detections');
 colormap jet;
 colorbar;
-% xlim([0,15]);
+%xlim([0,20]);      
  
 hold on;
 
@@ -111,7 +112,7 @@ allNoiseTimes   = [];             % For visualisation only
 allNoiseSpeeds  = [];             % For visualisation only
 
 % DBSCAN parameters (1D in m/s) 
-epsilon = ;  % 1.8 km/h
+epsilon = 0.5;  % 1.8 km/h
 minPts  = 2;
 
 for col = 1:Cols
@@ -184,7 +185,8 @@ scatter(finalDetTimes,  finalDetSpeeds*3.6,  10, 'r', 'filled', 'DisplayName','R
 xlabel('Time (s)'); ylabel('Speed (km/h)');
 title('DBSCAN Clustering, Representative and Noise Detections');
 legend('Location','best'); 
-% xlim([0,15]);
+%xlim([0,20]);      
+ylim([10,70]);     
  
 hold off;
 
@@ -193,7 +195,8 @@ figure('Name','Final DBSCAN Result');
 scatter(finalDetTimes, finalDetSpeeds*3.6, 5, 'r', 'filled');
 xlabel('Time (s)'); ylabel('Speed (km/h)');
 title('Multiple Detections per Column (DBSCAN)');
-% xlim([0,15]);
+%xlim([0,20]);      
+ylim([10,70]);     
  
 grid on;
 
@@ -233,7 +236,7 @@ figure('Name','Tracking Results');
 hold on; grid on;
 xlabel('Time (s)'); ylabel('Speed (km/h)');
 title('TrackerJPDA with CA Kalman Filter');
-% xlim([0,15]);
+%xlim([0,20]);      
 ylim([10,70]);
 
 R_meas = 0.04;       % measurement noise (variance) found empirically
@@ -305,7 +308,7 @@ hold off;
 % Merge partial or overlapping tracks that likely represent the same vehicle 
 % if they have sufficient time overlap and minimal speed difference.
 
-mergedTrackHistories_overlap = mergeTracksAllPassesAvg(trackHistories, , 1.5);
+mergedTrackHistories_overlap = mergeTracksAllPassesAvg(trackHistories, 0.5, 1.5);
 
 %% A) Plot Merged Tracks (Overlap-Based Only)
 
@@ -328,7 +331,8 @@ xlabel('Time (s)');
 ylabel('Speed (km/h)');
 title('Merged Tracks (Overlap-Based Only)');
 grid on; legend('Location', 'best');
-% xlim([0,15]);
+%xlim([0,20]);   
+ylim([10,70]);     
  
 hold off;
 
@@ -368,7 +372,8 @@ xlabel('Time (s)');
 ylabel('Speed (km/h)');
 title('Merged Tracks (Including Same-Velocity Gap Merge)');
 grid on; legend('Location', 'best');
-% xlim([0,15]);
+%xlim([0,20]);      
+ylim([10,70]);     
  
 hold off;
 
@@ -443,7 +448,7 @@ for k = 1:numVehicles
 end
 
 legend('Location','best');
-% xlim([0,15]);
+%xlim([0,20]);      
 ylim([10,70]);
  
 hold off;
@@ -456,14 +461,17 @@ BinaryMask = (P_db >= threshold_dB);
 
 figure('Name','Binary Mask >= -22 dB');
 imagesc(T, v_mps*3.6, BinaryMask);
+%imagesc(T, v_mps*3.6, P_db, [-40 0]);
 colormap("gray");
+%colormap(jet);
 colorbar;
 axis xy;
 hold on;
 xlabel('Time (s)');
 ylabel('Speed (km/h)');
 title('Binary Mask (Spectrogram >= -22 dB)');
-% xlim([0,15]);
+%xlim([0,20]);      
+ylim([10,70]);     
  
 
 %% Vehicle Classification with Row-by-Row Detection Width & Single Plot
@@ -609,5 +617,4 @@ for k = 1:numVehicles
     fprintf('%-8d %-15.2f %-15.2f %-15.2f %-15.2f %-12s %-12s\n', ...
         k, allSpeeds(k),allSpeeds(k)*3.6, detWidth(k), normWidth(k), direction, vehicleClasses{k});
 end
-
 
