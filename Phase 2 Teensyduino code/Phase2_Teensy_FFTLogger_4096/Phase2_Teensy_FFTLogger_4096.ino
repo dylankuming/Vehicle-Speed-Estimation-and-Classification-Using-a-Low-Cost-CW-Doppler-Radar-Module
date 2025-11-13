@@ -30,16 +30,16 @@ void setup() {
   AudioMemory_F32(100);   // Allocate 100 audio blocks for F32 processing (enough for 4096-pt FFT)
 
   // Read the last run number from EEPROM, increment it, and store it back.
-  // Each boot creates a new sequential file name (REC0001.BIN, REC0002.BIN, ...).
+  // Each boot creates a new sequential file name (REC0001.bin, REC0002.bin, ...).
   uint16_t runCount = 0;  
   EEPROM.get(EEPROM_ADDR, runCount);
   runCount++; 
   EEPROM.put(EEPROM_ADDR, runCount);
   
 
-  // Format a zero-padded 4-digit filename (e.g., REC0007.BIN)
+  // Format a zero-padded 4-digit filename (e.g., REC0007.bin)
   char filename[16];
-  snprintf(filename, sizeof(filename), "REC%04u.BIN", runCount);
+  snprintf(filename, sizeof(filename), "REC%04u.bin", runCount);
   Serial.print("Starting run #"); 
   Serial.print(runCount);
   Serial.print(" → opening file "); 
@@ -92,7 +92,7 @@ void loop() {
   if (FFT4096iq1.available()) {
     float* pPwr = FFT4096iq1.getData();     // Pointer to current FFT power data buffer
 
-    // Write the 2048 float values (8192 bytes) to the binary .BIN file
+    // Write the 2048 float values (8192 bytes) to the binary .bin file
     for (int i = 0; i < 2048; i++) {
       specFile.write((uint8_t*)&pPwr[i], sizeof(float));    
     }
